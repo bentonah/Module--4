@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise and Health Tracker</title>
+</head>
+<body>
+
+<!-- Header with User Greeting -->
+<h1>Welcome, {{ current_user.username }}!</h1>
+
+<!-- Display Exercise Data -->
+<section>
+    <h2>Exercise Data</h2>
+    <ul>
+        {% for exercise in exercises %}
+            <li>{{ exercise.name }} - {{ exercise.reps }} reps, {{ exercise.sets }} sets, {{ exercise.weight }} kg</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<!-- Display Health Measurement Data -->
+<section>
+    <h2>Health Measurement Data</h2>
+    <ul>
+        {% for measurement in health_measurements %}
+            <li>Weight: {{ measurement.weight }} kg, BMI: {{ measurement.bmi }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<!-- Add Exercise Form -->
+<section>
+    <h2>Add Exercise</h2>
+    <form action="{{ url_for('add_exercise') }}" method="post">
+        <label for="name">Exercise Name:</label>
+        <input type="text" name="name" required>
+        <label for="reps">Reps:</label>
+        <input type="number" name="reps" required>
+        <label for="sets">Sets:</label>
+        <input type="number" name="sets" required>
+        <label for="weight">Weight (kg):</label>
+        <input type="number" name="weight" required>
+        <button type="submit">Add Exercise</button>
+    </form>
+</section>
+
+<!-- Add Health Measurement Form -->
+<section>
+    <h2>Add Health Measurement</h2>
+    <form action="{{ url_for('add_health_measurement') }}" method="post">
+        <!-- Add health measurement form fields here -->
+        <label for="weight">Weight (kg):</label>
+        <input type="number" name="weight" step="0.1" required>
+        <label for="bmi">BMI:</label>
+        <input type="number" name="bmi" step="0.1" required>
+        <!-- Add more fields as needed -->
+        <button type="submit">Add Health Measurement</button>
+    </form>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise and Health Summary</title>
+</head>
+<body>
+
+<!-- Header for Exercise and Health Summary -->
+<h1>Exercise and Health Summary</h1>
+
+<!-- Display Joined Data -->
+<section>
+    <h2>Joined Data</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Exercise Name</th>
+                <th>Reps</th>
+                <th>Sets</th>
+                <th>Exercise Weight (kg)</th>
+                <th>Health Measurement Weight (kg)</th>
+                <th>Health Measurement BMI</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in joined_data %}
+                <tr>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.reps }}</td>
+                    <td>{{ data.sets }}</td>
+                    <td>{{ data.weight }}</td>
+                    <td>{{ data.health_weight }}</td>
+                    <td>{{ data.bmi }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+<!-- Display Summary Data -->
+<section>
+    <h2>Summary Data</h2>
+    <ul>
+        <li>Total Reps: {{ summary_data.total_reps }}</li>
+        <li>Average Exercise Weight: {{ summary_data.average_weight }}</li>
+        <li>Maximum Health Measurement BMI: {{ summary_data.max_bmi }}</li>
+    </ul>
+</section>
+
+</body>
+</html>
